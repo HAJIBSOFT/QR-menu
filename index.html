@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المنيو الرقمي | تصميم مينيو إلكتروني احترافي</title>
+    <!-- خطوط جوجل -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- أيقونات Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* === متغيرات الألوان والخطوط === */
+        :root {
+            --primary-color: #1a2538; /* كحلي داكن للشريط العلوي والفوتر */
+            --secondary-color: #ff7f50; /* برتقالي مرجاني (لون مميز وجذاب) */
+            --accent-color: #4CAF50; /* أخضر (للنجاح أو الإجراءات الإيجابية) */
+            --light-bg: #f8f9fa; /* خلفية فاتحة جداً للأقسام */
+            --dark-bg: #343a40;
+            --text-color: #333;
+            --light-text-color: #ffffff;
+            --border-color: #e0e0e0;
+            --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --main-font: 'Tajawal', sans-serif;
+        }
+
+        /* === إعادة تعيين أساسية === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--main-font);
+            line-height: 1.8;
+            color: var(--text-color);
+            background-color: #fff; /* خلفية بيضاء أساسية للصفحة */
+            direction: rtl;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: #555;
+            font-size: 1.05rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* === الهيدر === */
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #logo {
+            font-size: 1.8rem;
+            color: var(--light-text-color);
+            font-weight: 700;
+        }
+         #logo i {
+            color: var(--secondary-color);
+            margin-left: 8px;
+         }
+
+        header nav ul {
+            display: flex;
+        }
+
+        header nav ul li {
+            margin-right: 25px;
+        }
+        header nav ul li:last-child {
+            margin-right: 0;
+        }
+
+        header nav ul li a {
+            color: var(--light-text-color);
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        header nav ul li a:hover,
+        header nav ul li a.active {
+            background-color: var(--secondary-color);
+            color: var(--light-text-color);
+        }
+        .menu-toggle {
+            display: none; /* Hidden by default */
+            color: var(--light-text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+
+        /* === قسم البطل (Hero) === */
+        #hero {
+            color: var(--light-text-color);
+            padding: 7rem 0; /* زيادة المسافة الداخلية */
+            text-align: center;
+            position: relative;
+            background-image: linear-gradient(rgba(26, 37, 56, 0.85), rgba(26, 37, 56, 0.92)), url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiT8rvFlYtUl_W2PRq4_Wxxu2rTEanPij120WK5-1q56mZOmztgC5TfLkoe9yhwF3EAjtArdU1YdLlPRQz67G6Qs8hcnvTrxe4eZCOMPvoWOdjqoj-XnT3pwg4ydgszQHCoVgIehT7TpuxfS5Zz7xgNO6xl7ow8rcjEbFyWKOFA_3JbZtteuaYggD7i3X34/s2700/phone%20in%20hand%20mockup.png');
+            background-size: cover;
+            background-position: center center; /* لضمان ظهور الجزء المهم من الصورة */
+            background-attachment: fixed; /* تأثير Parallax بسيط */
+        }
+
+        #hero h1 { /* تغيير H2 إلى H1 لأهمية العنوان الرئيسي */
+            font-size: 3rem; /* أكبر قليلاً */
+            margin-bottom: 1.5rem;
+            color: var(--light-text-color);
+            font-weight: 700;
+        }
+        #hero .subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+            color: #e0e0e0;
+        }
+        .hero-buttons .cta-button { margin: 0 10px 10px; }
+
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--light-text-color) !important; /* توحيد لون النص */
+            padding: 14px 35px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px; /* حواف دائرية جداً */
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-transform: uppercase;
+        }
+        .cta-button i {
+            margin-left: 8px; /* لليمين في RTL */
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-color);
+            color: var(--light-text-color) !important;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+        .cta-button.secondary {
+             background-color: transparent;
+             border-color: var(--secondary-color);
+             color: var(--secondary-color) !important;
+        }
+        .cta-button.secondary:hover {
+            background-color: var(--secondary-color);
+            color: var(--light-text-color) !important;
+        }
+
+
+        /* === تنسيقات الأقسام العامة === */
+        .section-padding {
+            padding: 5rem 0;
+        }
+
+        .bg-light {
+            background-color: var(--light-bg);
+        }
+
+        section .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+        section .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        section .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* === قسم "المميزات" === */
+        #features .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .feature-item {
+            background-color: var(--light-text-color);
+            padding: 2.5rem 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .feature-item .icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            background-color: #fff0e9; /* لون خلفية خفيف للايقونة */
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 50%;
+        }
+        .feature-item h3 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+        }
+        .feature-item p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* === قسم "الأسعار" === */
+        #pricing {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+        }
+        #pricing .section-title, #pricing .section-subtitle {
+            color: var(--light-text-color);
+        }
+        #pricing .section-title::after {
+            background-color: var(--light-text-color); /* تغيير لون الخط تحت العنوان */
+        }
+        .pricing-card {
+            background-color: var(--light-text-color);
+            color: var(--text-color);
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            max-width: 400px;
+            margin: 2rem auto 0; /* توسيط البطاقة */
+        }
+        .pricing-card h3 {
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        .price {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        .price span.currency {
+            font-size: 1.5rem;
+            vertical-align: super;
+            margin-right: 5px;
+        }
+        .price span.original-price {
+            font-size: 1.2rem;
+            text-decoration: line-through;
+            color: #999;
+            display: block;
+            margin-top: -0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .pricing-card p {
+            margin-bottom: 2rem;
+        }
+
+        /* === قسم سياسة الدعم الفني === */
+        #support-policy {
+            background-color: #fff; 
+        }
+
+        .support-policy-content {
+            margin-top: 3rem;
+            display: grid;
+            gap: 2rem; 
+        }
+
+        .policy-item {
+            background-color: var(--light-bg); 
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .policy-item h4 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .policy-item h4 i {
+            color: var(--secondary-color);
+            margin-left: 10px; 
+            font-size: 1.5rem;
+            width: 30px; 
+            text-align: center;
+        }
+
+        .policy-item p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+        }
+         .policy-item p:last-child {
+            margin-bottom: 0;
+        }
+
+        .policy-item .highlight-note {
+            font-weight: 500;
+            color: var(--accent-color); 
+            background-color: #e8f5e9; 
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: inline-block; 
+            margin-top: 0.5rem;
+        }
+
+
+        /* === الفوتر === */
+        footer {
+            background-color: var(--dark-bg);
+            color: #ccc; 
+            text-align: center;
+            padding: 2.5rem 0;
+            margin-top: 3rem;
+        }
+        footer p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+            color: #ccc;
+        }
+        footer a {
+            color: var(--secondary-color);
+        }
+        footer a:hover {
+            color: var(--light-text-color);
+        }
+
+        /* === استجابة للتصاميم (Responsive) === */
+        @media (max-width: 992px) {
+            #hero h1 { font-size: 2.5rem; }
+            #hero .subtitle { font-size: 1.2rem; }
+        }
+
+        @media (max-width: 768px) {
+            header .container {
+                /* flex-direction: column; */ 
+            }
+            .menu-toggle {
+                display: block; 
+            }
+            header nav {
+                position: absolute;
+                top: 100%; 
+                right: 0; 
+                background-color: var(--primary-color);
+                width: 100%;
+                display: none; 
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            header nav.active {
+                display: block; 
+            }
+            header nav ul {
+                flex-direction: column;
+                width: 100%;
+            }
+            header nav ul li {
+                margin-right: 0;
+                text-align: center;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+             header nav ul li:last-child {
+                border-bottom: none;
+            }
+            header nav ul li a {
+                display: block;
+                padding: 1rem;
+            }
+
+            #hero { padding: 5rem 0; }
+            #hero h1 { font-size: 2.2rem; }
+            #hero .subtitle { font-size: 1.1rem; }
+            .cta-button { padding: 12px 25px; font-size: 1rem; }
+
+            .features-grid { grid-template-columns: 1fr; } 
+            .feature-item { padding: 2rem 1.5rem; }
+
+            .section-padding { padding: 3.5rem 0; }
+            section .section-title { font-size: 2rem; }
+            section .section-subtitle { font-size: 1rem; margin-bottom: 2.5rem;}
+        }
+
+         @media (max-width: 480px) {
+            .hero-buttons .cta-button {
+                display: block; 
+                width: 80%;
+                margin: 10px auto;
+            }
+         }
+         /* استجابة لقسم سياسة الدعم */
+        @media (min-width: 768px) {
+            .support-policy-content {
+                /* يمكن استخدام grid لتقسيمها لعمودين إذا أردت في شاشات أكبر */
+                /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="#" id="logo"><i class="fas fa-utensils"></i> المنيو الرقمي</a>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#hero" class="active">الرئيسية</a></li>
+                    <li><a href="#features">المميزات</a></li>
+                    <li><a href="#pricing">الأسعار</a></li>
+                    <li><a href="#support-policy">سياسة الدعم</a></li>
+                    <li><a href="#contact-cta">اطلب الآن</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container">
+                <h1>حوّل قائمتك إلى تجربة رقمية تفاعلية!</h1>
+                <p class="subtitle">نصمّم لك مينيو إلكتروني احترافي وجذاب، يسهّل على زبائنك التصفح والطلب مباشرة، ويصلك الطلب فوراً على الواتساب. مثالي للمطاعم، الكافيهات، والفود تركس.</p>
+                <div class="hero-buttons">
+                    <a href="https://hajibsoft.github.io/Restaurant-menu/" target="_blank" class="cta-button"><i class="fas fa-eye"></i> شاهد نموذج للمنيو</a>
+                    <a href="https://api.whatsapp.com/send/?phone=966510012621" target="_blank" class="cta-button secondary"><i class="fab fa-whatsapp"></i> الطلب عبر الواتساب</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="section-padding bg-light">
+            <div class="container">
+                <h2 class="section-title">لماذا تختار المنيو الإلكتروني الخاص بنا؟</h2>
+                <p class="section-subtitle">اكتشف المزايا التي تجعل خدمتنا الخيار الأمثل لعملك.</p>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="icon"><i class="fas fa-mobile-alt"></i></div>
+                        <h3>تصميم عصري وجذاب</h3>
+                        <p>مينيو بتصميم يفتح النفس، متوافق مع جميع الأجهزة، ويعكس هوية علامتك التجارية.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="icon"><i class="fas fa-search"></i></div>
+                        <h3>سهولة التصفح والبحث</h3>
+                        <p>يمكن للزبائن البحث بالاسم أو التصنيف، وتصفح الأصناف والصور والأسعار بوضوح.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="icon"><i class="fas fa-shipping-fast"></i></div>
+                        <h3>خيار الاستلام أو التوصيل</h3>
+                        <p>يدعم المنيو تحديد خيار الاستلام من الفرع أو طلب التوصيل للمنزل بكل سهولة.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="icon"><i class="fab fa-whatsapp"></i></div>
+                        <h3>طلبات فورية على واتساب</h3>
+                        <p>تصلك تفاصيل الطلب مباشرة على رقم الواتساب الخاص بك، مما يسرّع عملية التحضير.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="icon"><i class="fas fa-qrcode"></i></div>
+                        <h3>سهولة الوصول عبر QR Code</h3>
+                        <p>يمكن للزبائن مسح كود QR للوصول للمنيو فوراً بدون الحاجة لتطبيقات إضافية.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="icon"><i class="fas fa-tags"></i></div>
+                        <h3>عرض موفر وقيّم</h3>
+                        <p>كل هذه المميزات وأكثر بسعر تنافسي يساعدك على تطوير عملك بأقل التكاليف.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="section-padding">
+            <div class="container">
+                <h2 class="section-title">عرض خاص لا يُفوّت!</h2>
+                <p class="section-subtitle">احصل على مينيو إلكتروني متكامل بجميع المميزات بسعر استثنائي لفترة محدودة.</p>
+                <div class="pricing-card">
+                    <h3>الباقة الاحترافية</h3>
+                    <div class="price">
+                        <span class="currency">ريال</span>149
+                        <span class="original-price">كان بـ 499 ريال</span>
+                    </div>
+                    <p>تصميم مينيو إلكتروني شامل، مع دعم خيارات الاستلام والتوصيل، وإرسال الطلبات عبر الواتساب، بالإضافة إلى QR كود خاص بك.</p>
+                    <a href="https://api.whatsapp.com/send/?phone=966510012621" target="_blank" class="cta-button"><i class="fab fa-whatsapp"></i> اطلب باقتك الآن</a>
+                </div>
+            </div>
+        </section>
+        
+        <section id="support-policy" class="section-padding">
+            <div class="container">
+                <h2 class="section-title">🛠️ سياسة الدعم الفني</h2>
+                <p class="section-subtitle">نحرص على تقديم دعم فني مميز يضمن استمرارية وسلاسة عمل المنيو الإلكتروني الخاص بك.</p>
+
+                <div class="support-policy-content">
+                    <div class="policy-item">
+                        <h4><i class="fas fa-edit"></i> 1. تعديلات المحتوى (مجاناً لمدة شهر من التسليم)</h4>
+                        <p>- تعديل المنتجات، الأسعار، أو شعار المطعم (اللوقو) مجانًا خلال أول 30 يومًا من تاريخ تسليم الموقع.</p>
+                    </div>
+
+                    <div class="policy-item">
+                        <h4><i class="fas fa-tools"></i> 2. الدعم الفني والإصلاحات (مدى الحياة)</h4>
+                        <p>- إصلاح أي أخطاء فنية أو مشاكل تشغيلية قد تظهر في الموقع.</p>
+                        <p>- إجراء التحديثات الأساسية الضرورية للمحافظة على أداء المنيو وكفاءته.</p>
+                        <p class="highlight-note">(كل ذلك دون أي رسوم إضافية مدى الحياة)</p>
+                    </div>
+
+                    <div class="policy-item">
+                        <h4><i class="fas fa-info-circle"></i> 3. الاستثناءات (غير مشمولة)</h4>
+                        <p>- لا يشمل الدعم المجاني أي تغييرات جذرية في التصميم (مثل تغيير القالب بالكامل أو إعادة هيكلة كبيرة).</p>
+                        <p>- لا يشمل إضافات ميزات جديدة جوهرية على المنيو بعد التسليم (هذه تعتبر خدمات تطوير إضافية وتُحسب كتكلفة مستقلة)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact-cta" class="section-padding bg-light">
+            <div class="container" style="text-align: center;">
+                 <h2 class="section-title">جاهز لترقية مطعمك؟</h2>
+                 <p class="section-subtitle" style="margin-bottom: 2rem;">لا تتردد! ابدأ اليوم في تقديم تجربة طلب طعام عصرية وسلسة لزبائنك.</p>
+                 <a href="https://api.whatsapp.com/send/?phone=966510012621" target="_blank" class="cta-button"><i class="fab fa-whatsapp"></i> تواصل معنا واطلب المنيو</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 المنيو الرقمي. جميع الحقوق محفوظة.</p>
+            <p>تصميم وتطوير فريق حاجب سوفت</p>
+			<p>HAJIB SOFT TEAM</p>
+        </div>
+    </footer>
+
+    <script>
+        // قائمة التنقل للجوال (Hamburger Menu)
+        const menuToggle = document.getElementById('mobile-menu');
+        const mainNav = document.getElementById('main-nav');
+
+        if (menuToggle && mainNav) {
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+                // تغيير أيقونة الـ hamburger
+                const icon = menuToggle.querySelector('i');
+                if (mainNav.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        }
+        
+        // تمرير سلس لروابط القائمة وتحديث الرابط النشط
+        document.querySelectorAll('header nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    const headerOffset = document.querySelector('header').offsetHeight || 70;
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = elementPosition - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+
+                    // إغلاق القائمة بعد النقر (في الجوال)
+                    if (mainNav && mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                        const icon = menuToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                }
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('main section[id]'); // استهداف الأقسام داخل main فقط
+            const headerHeight = document.querySelector('header').offsetHeight || 70;
+            const navLinks = document.querySelectorAll('header nav a');
+
+            let foundCurrent = false;
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - headerHeight - 50; // 50px إضافية كهامش
+                const sectionBottom = sectionTop + section.offsetHeight;
+                if (pageYOffset >= sectionTop && pageYOffset < sectionBottom) {
+                    current = section.getAttribute('id');
+                    foundCurrent = true;
+                }
+            });
+            
+            // إذا لم يتم تحديد قسم (أعلى الصفحة قبل أول قسم)، أو بعد آخر قسم
+            if (!foundCurrent) {
+                if (pageYOffset < (sections[0]?.offsetTop - headerHeight - 50)) {
+                    current = sections[0]?.getAttribute('id'); // اجعل الهيرو هو النشط
+                } else if (pageYOffset >= (sections[sections.length-1]?.offsetTop - headerHeight - 50 + sections[sections.length-1]?.offsetHeight) ) {
+                    // اذا كان التمرير بعد آخر قسم، لا تفعل أي رابط (أو فعل آخر رابط إذا أردت)
+                     current = ''; // أو sections[sections.length-1].getAttribute('id');
+                }
+            }
+
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+            // Ensure first link is active if no section is detected and at top
+             if (!current && pageYOffset < (sections[0]?.offsetTop - headerHeight - 50) ) {
+                const heroLink = document.querySelector('header nav a[href="#hero"]');
+                if (heroLink) heroLink.classList.add('active');
+             }
+        });
+
+        // تأكد من أن الرابط الأول نشط عند تحميل الصفحة إذا كان الهيرو مرئيًا
+        window.addEventListener('DOMContentLoaded', () => {
+            window.dispatchEvent(new Event('scroll')); // شغل دالة التمرير مرة لتحديد القسم النشط
+        });
+
+
+    </script>
+
+</body>
+</html>
